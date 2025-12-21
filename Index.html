@@ -13,7 +13,6 @@ body{
   color:#fff;
 }
 
-/* HEADER */
 header{
   background:#c40000;
   padding:14px;
@@ -23,7 +22,6 @@ header{
   letter-spacing:2px;
 }
 
-/* GRID CUADRADO */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
@@ -35,7 +33,6 @@ header{
   position:relative;
   border-radius:14px;
   overflow:hidden;
-  cursor:pointer;
   aspect-ratio:1/1;
   background:#000;
 }
@@ -46,7 +43,6 @@ header{
   object-fit:cover;
 }
 
-/* PLAY */
 .play{
   position:absolute;
   inset:0;
@@ -54,21 +50,19 @@ header{
   align-items:center;
   justify-content:center;
   background:rgba(0,0,0,.35);
-  pointer-events:none; /* ✅ SOLUCIÓN DEFINITIVA */
 }
 
-.play span{
+.play button{
   background:#e50914;
-  width:50px;
-  height:50px;
+  border:none;
+  width:52px;
+  height:52px;
   border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  color:#fff;
   font-size:22px;
+  cursor:pointer;
 }
 
-/* MODAL */
 #modal{
   display:none;
   position:fixed;
@@ -97,7 +91,7 @@ header{
 
 .close{
   position:absolute;
-  top:-44px;
+  top:-45px;
   right:0;
   background:#e50914;
   color:#fff;
@@ -108,7 +102,6 @@ header{
   cursor:pointer;
 }
 
-/* WHATSAPP */
 .wa-float{
   position:fixed;
   bottom:20px;
@@ -126,10 +119,8 @@ header{
 
 .wa-float img{
   width:30px;
-  height:30px;
 }
 
-/* FOOTER */
 footer{
   text-align:center;
   padding:14px;
@@ -143,26 +134,8 @@ footer{
 
 <header>YERSONMUSIC</header>
 
-<div class="grid">
+<div class="grid" id="videos"></div>
 
-  <div class="card" onclick="reproducir('AuFXL5TVsVw')">
-    <img src="https://img.youtube.com/vi/AuFXL5TVsVw/hqdefault.jpg" alt="">
-    <div class="play"><span>▶</span></div>
-  </div>
-
-  <div class="card" onclick="reproducir('YJTVhaaae68')">
-    <img src="https://img.youtube.com/vi/YJTVhaaae68/hqdefault.jpg" alt="">
-    <div class="play"><span>▶</span></div>
-  </div>
-
-  <div class="card" onclick="reproducir('0UqRpz295z8')">
-    <img src="https://img.youtube.com/vi/0UqRpz295z8/hqdefault.jpg" alt="">
-    <div class="play"><span>▶</span></div>
-  </div>
-
-</div>
-
-<!-- MODAL -->
 <div id="modal">
   <div id="player">
     <button class="close" onclick="cerrar()">✖ Cerrar</button>
@@ -170,25 +143,60 @@ footer{
   </div>
 </div>
 
-<!-- WHATSAPP -->
 <a href="https://wa.me/51956461177" target="_blank" class="wa-float">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
 <footer>YersonMusic 2026 © All rights reserved</footer>
 
 <script>
+/* 👉👉👉 TODOS TUS VIDEOS AQUÍ 👈👈👈 */
+const listaVideos = [
+  "AuFXL5TVsVw",
+  "YJTVhaaae68",
+  "0UqRpz295z8",
+  "xAmz55B8VZA",
+  "qa3wwx3ZnyY",
+  "QvtQPbR568U",
+  "HqVtm6ect7Y",
+  "CIogtTNLGx0",
+  "I6EixAa_OU4",
+  "cq9s4rxXSsM",
+  "cXr-0kWcbIs",
+  "FcWZjMlneKs",
+  "rELtjiUtc50",
+  "ItHglwv0bgU",
+  "nLxELS3Ei0Q",
+  "U9-EWOzuwZ4",
+  "VJN9C-PrS7E",
+  "L4o08Xu5Gs8",
+  "r_TLZVmyMmI",
+  "P-6wmpoWPUo",
+  "p9njZy-8HF4",
+  "KuDOe71Urz0",
+  "eJBKrySnwMs",
+  "UIoon2T3JW0",
+  "jGJQQUUpiYA"
+];
+
+const contenedor = document.getElementById("videos");
+
+listaVideos.forEach(id=>{
+  contenedor.innerHTML += `
+    <div class="card">
+      <img src="https://img.youtube.com/vi/${id}/hqdefault.jpg">
+      <div class="play">
+        <button onclick="reproducir('${id}')">▶</button>
+      </div>
+    </div>`;
+});
+
 function reproducir(id){
   const modal = document.getElementById("modal");
   const box = document.getElementById("videoBox");
-  box.innerHTML = "";
-
-  const iframe = document.createElement("iframe");
-  iframe.src = "https://www.youtube.com/embed/" + id + "?autoplay=1&rel=0";
-  iframe.allow = "autoplay; encrypted-media";
-  iframe.allowFullscreen = true;
-
-  box.appendChild(iframe);
+  box.innerHTML = `
+    <iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
+    allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
   modal.style.display = "flex";
 }
 
