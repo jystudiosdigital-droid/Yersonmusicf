@@ -164,39 +164,42 @@ footer{
 }
 .wa-float img{ width:30px; }
 
-/* MARCA DE AGUA */
+/* MARCA DE AGUA NOTORIA */
 .watermark{
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:1;
-  opacity:0.04;
+  z-index:500;
+  opacity:0.15;
   transform:rotate(-30deg);
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  grid-template-rows:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:repeat(3,1fr);
   place-items:center;
 }
 .watermark span{
-  font-size:32px;
-  font-weight:bold;
-  letter-spacing:6px;
-  animation:glow 4s ease-in-out infinite;
+  font-size:46px;
+  font-weight:900;
+  letter-spacing:8px;
+  color:#ffffff;
+  animation:glow 3s ease-in-out infinite;
 }
 
-/* EFECTO BRILLO */
+/* BRILLO */
 @keyframes glow{
   0%,100%{
     text-shadow:
-      0 0 6px rgba(255,255,255,.2),
-      0 0 12px rgba(255,255,255,.15);
-    opacity:.25;
+      0 0 10px rgba(255,255,255,.6),
+      0 0 20px rgba(255,215,0,.5),
+      0 0 40px rgba(229,9,20,.4);
+    opacity:.5;
   }
   50%{
     text-shadow:
-      0 0 12px rgba(255,255,255,.6),
-      0 0 24px rgba(255,215,0,.4);
-    opacity:.45;
+      0 0 20px rgba(255,255,255,.9),
+      0 0 40px rgba(255,215,0,.8),
+      0 0 60px rgba(229,9,20,.6);
+    opacity:.85;
   }
 }
 </style>
@@ -265,9 +268,9 @@ function cerrar(){
   document.getElementById("videoBox").innerHTML="";
 }
 
-/* MARCA DE AGUA TEXTO */
+/* MARCA DE AGUA */
 const wm=document.getElementById("watermark");
-for(let i=0;i<16;i++) wm.innerHTML+=`<span>Yerson Humiri</span>`;
+for(let i=0;i<9;i++) wm.innerHTML+=`<span>Yerson Humiri</span>`;
 
 /* FECHAS */
 const d=new Date(),m=d.getMonth(),day=d.getDate(),h=d.getHours();
