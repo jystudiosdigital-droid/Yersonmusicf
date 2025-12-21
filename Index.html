@@ -147,7 +147,7 @@ footer{
   to{transform:translateY(110vh)}
 }
 
-/* WHATSAPP (ÚNICO AGREGADO) */
+/* WHATSAPP */
 .wa-float{
   position:fixed;
   bottom:20px;
@@ -162,13 +162,50 @@ footer{
   box-shadow:0 10px 24px rgba(0,0,0,.35);
   z-index:1000;
 }
-.wa-float img{
-  width:30px;
+.wa-float img{ width:30px; }
+
+/* MARCA DE AGUA */
+.watermark{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  opacity:0.04;
+  transform:rotate(-30deg);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:repeat(4,1fr);
+  place-items:center;
+}
+.watermark span{
+  font-size:32px;
+  font-weight:bold;
+  letter-spacing:6px;
+  animation:glow 4s ease-in-out infinite;
+}
+
+/* EFECTO BRILLO */
+@keyframes glow{
+  0%,100%{
+    text-shadow:
+      0 0 6px rgba(255,255,255,.2),
+      0 0 12px rgba(255,255,255,.15);
+    opacity:.25;
+  }
+  50%{
+    text-shadow:
+      0 0 12px rgba(255,255,255,.6),
+      0 0 24px rgba(255,215,0,.4);
+    opacity:.45;
+  }
 }
 </style>
 </head>
 
 <body>
+
+<!-- MARCA DE AGUA -->
+<div class="watermark" id="watermark"></div>
 
 <header>
   <div class="logo">
@@ -193,7 +230,6 @@ footer{
   </div>
 </div>
 
-<!-- BOTÓN WHATSAPP -->
 <a href="https://wa.me/51956461177" target="_blank" class="wa-float">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
@@ -219,15 +255,48 @@ videos.forEach(id=>{
 });
 
 function reproducir(id){
-  const modal=document.getElementById("modal");
-  const box=document.getElementById("videoBox");
-  box.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
-  allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-  modal.style.display="flex";
+  document.getElementById("videoBox").innerHTML=
+    `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
+     allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+  document.getElementById("modal").style.display="flex";
 }
 function cerrar(){
   document.getElementById("modal").style.display="none";
   document.getElementById("videoBox").innerHTML="";
+}
+
+/* MARCA DE AGUA TEXTO */
+const wm=document.getElementById("watermark");
+for(let i=0;i<16;i++) wm.innerHTML+=`<span>Yerson Humiri</span>`;
+
+/* FECHAS */
+const d=new Date(),m=d.getMonth(),day=d.getDate(),h=d.getHours();
+const hat=document.getElementById("hatIcon");
+const footer=document.getElementById("footerText");
+const text=document.getElementById("newYearText");
+
+if(m===11 && day>=20 && day<=25){
+  hat.textContent="🎅";
+  footer.textContent="🎄 YersonMusic 2026 © All rights reserved 🎄";
+  for(let i=0;i<35;i++){
+    const s=document.createElement("div");
+    s.className="snow";
+    s.innerText="❄";
+    s.style.left=Math.random()*100+"vw";
+    s.style.fontSize=10+Math.random()*15+"px";
+    s.style.animationDuration=3+Math.random()*5+"s";
+    s.style.opacity=Math.random();
+    document.body.appendChild(s);
+  }
+}
+
+if((m===11 && day>=26)||(m===0 && day===1)){
+  hat.textContent="🎆";
+  footer.textContent="🎆 YersonMusic 2026 © All rights reserved 🎆";
+  text.style.display="block";
+  text.textContent=(h>=18||h<6)
+    ?"🌙🎆 Feliz Año Nuevo 2026 🎆"
+    :"🎆 Feliz Año Nuevo 2026";
 }
 </script>
 
