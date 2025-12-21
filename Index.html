@@ -125,14 +125,6 @@ footer{
   color:#ccc;
 }
 
-/* FUEGOS */
-#fireworks{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:997;
-}
-
 /* NIEVE */
 .snow{
   position:fixed;
@@ -162,53 +154,11 @@ footer{
   box-shadow:0 10px 24px rgba(0,0,0,.35);
   z-index:1000;
 }
-.wa-float img{ width:30px; }
-
-/* MARCA DE AGUA NOTORIA */
-.watermark{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:500;
-  opacity:0.15;
-  transform:rotate(-30deg);
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-template-rows:repeat(3,1fr);
-  place-items:center;
-}
-.watermark span{
-  font-size:46px;
-  font-weight:900;
-  letter-spacing:8px;
-  color:#ffffff;
-  animation:glow 3s ease-in-out infinite;
-}
-
-/* BRILLO */
-@keyframes glow{
-  0%,100%{
-    text-shadow:
-      0 0 10px rgba(255,255,255,.6),
-      0 0 20px rgba(255,215,0,.5),
-      0 0 40px rgba(229,9,20,.4);
-    opacity:.5;
-  }
-  50%{
-    text-shadow:
-      0 0 20px rgba(255,255,255,.9),
-      0 0 40px rgba(255,215,0,.8),
-      0 0 60px rgba(229,9,20,.6);
-    opacity:.85;
-  }
-}
+.wa-float img{width:30px;}
 </style>
 </head>
 
 <body>
-
-<!-- MARCA DE AGUA -->
-<div class="watermark" id="watermark"></div>
 
 <header>
   <div class="logo">
@@ -220,7 +170,6 @@ footer{
 <div class="grid" id="grid"></div>
 
 <div id="newYearText"></div>
-<canvas id="fireworks"></canvas>
 
 <footer id="footerText">
   YersonMusic 2026 © All rights reserved
@@ -268,16 +217,13 @@ function cerrar(){
   document.getElementById("videoBox").innerHTML="";
 }
 
-/* MARCA DE AGUA */
-const wm=document.getElementById("watermark");
-for(let i=0;i<9;i++) wm.innerHTML+=`<span>Yerson Humiri</span>`;
-
 /* FECHAS */
 const d=new Date(),m=d.getMonth(),day=d.getDate(),h=d.getHours();
 const hat=document.getElementById("hatIcon");
 const footer=document.getElementById("footerText");
 const text=document.getElementById("newYearText");
 
+/* NAVIDAD */
 if(m===11 && day>=20 && day<=25){
   hat.textContent="🎅";
   footer.textContent="🎄 YersonMusic 2026 © All rights reserved 🎄";
@@ -293,6 +239,7 @@ if(m===11 && day>=20 && day<=25){
   }
 }
 
+/* AÑO NUEVO */
 if((m===11 && day>=26)||(m===0 && day===1)){
   hat.textContent="🎆";
   footer.textContent="🎆 YersonMusic 2026 © All rights reserved 🎆";
