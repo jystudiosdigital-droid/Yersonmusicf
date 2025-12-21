@@ -23,7 +23,7 @@ header{
   letter-spacing:2px;
 }
 
-/* GRID VIDEOS */
+/* GRID DE VIDEOS */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
@@ -45,14 +45,14 @@ header{
   display:block;
 }
 
-/* BOTÓN PLAY */
+/* PLAY ROJO */
 .play{
   position:absolute;
   inset:0;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:rgba(0,0,0,.4);
+  background:rgba(0,0,0,.35);
 }
 
 .play span{
@@ -106,7 +106,7 @@ header{
   cursor:pointer;
 }
 
-/* WHATSAPP */
+/* WHATSAPP FLOTANTE (LOGO ORIGINAL) */
 .wa-float{
   position:fixed;
   bottom:20px;
@@ -114,22 +114,17 @@ header{
   width:56px;
   height:56px;
   background:#25D366;
-  color:#fff;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:30px;
-  text-decoration:none;
   box-shadow:0 10px 24px rgba(0,0,0,.35);
   z-index:1000;
-  animation:waPulse 2s infinite;
 }
 
-@keyframes waPulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.08)}
-  100%{transform:scale(1)}
+.wa-float img{
+  width:30px;
+  height:30px;
 }
 
 /* FOOTER */
@@ -147,7 +142,7 @@ footer{
 <header>YERSONMUSIC</header>
 
 <div class="grid">
-  <!-- AGREGA TODOS LOS VIDEOS QUE QUIERAS -->
+  <!-- PUEDES AGREGAR TODOS LOS VIDEOS QUE QUIERAS -->
   <div class="card" onclick="reproducir('AuFXL5TVsVw')">
     <img src="https://img.youtube.com/vi/AuFXL5TVsVw/hqdefault.jpg">
     <div class="play"><span>▶</span></div>
@@ -172,8 +167,10 @@ footer{
   </div>
 </div>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/51956461177" target="_blank" class="wa-float">💬</a>
+<!-- BOTÓN WHATSAPP -->
+<a href="https://wa.me/51956461177" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
 
 <footer>YersonMusic 2026 © All rights reserved</footer>
 
