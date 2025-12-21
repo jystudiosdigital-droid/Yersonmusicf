@@ -36,7 +36,7 @@ header{
   border-radius:14px;
   overflow:hidden;
   cursor:pointer;
-  aspect-ratio:1/1; /* 🔥 CUADRO */
+  aspect-ratio:1/1;
   background:#000;
 }
 
@@ -46,7 +46,7 @@ header{
   object-fit:cover;
 }
 
-/* PLAY ROJO */
+/* PLAY */
 .play{
   position:absolute;
   inset:0;
@@ -54,6 +54,7 @@ header{
   align-items:center;
   justify-content:center;
   background:rgba(0,0,0,.35);
+  pointer-events:none; /* ✅ SOLUCIÓN DEFINITIVA */
 }
 
 .play span{
@@ -67,7 +68,7 @@ header{
   font-size:22px;
 }
 
-/* MODAL VIDEO */
+/* MODAL */
 #modal{
   display:none;
   position:fixed;
@@ -145,17 +146,17 @@ footer{
 <div class="grid">
 
   <div class="card" onclick="reproducir('AuFXL5TVsVw')">
-    <img src="https://img.youtube.com/vi/AuFXL5TVsVw/hqdefault.jpg">
+    <img src="https://img.youtube.com/vi/AuFXL5TVsVw/hqdefault.jpg" alt="">
     <div class="play"><span>▶</span></div>
   </div>
 
   <div class="card" onclick="reproducir('YJTVhaaae68')">
-    <img src="https://img.youtube.com/vi/YJTVhaaae68/hqdefault.jpg">
+    <img src="https://img.youtube.com/vi/YJTVhaaae68/hqdefault.jpg" alt="">
     <div class="play"><span>▶</span></div>
   </div>
 
   <div class="card" onclick="reproducir('0UqRpz295z8')">
-    <img src="https://img.youtube.com/vi/0UqRpz295z8/hqdefault.jpg">
+    <img src="https://img.youtube.com/vi/0UqRpz295z8/hqdefault.jpg" alt="">
     <div class="play"><span>▶</span></div>
   </div>
 
@@ -171,7 +172,7 @@ footer{
 
 <!-- WHATSAPP -->
 <a href="https://wa.me/51956461177" target="_blank" class="wa-float">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
 <footer>YersonMusic 2026 © All rights reserved</footer>
