@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>YERSONMUSIC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  background:#0b0b0b;
+  font-family:Arial, sans-serif;
+  color:#fff;
+}
+
+/* HEADER */
+header{
+  background:linear-gradient(90deg,#b30000,#e50914,#b30000);
+  padding:18px;
+  text-align:center;
+}
+.logo{
+  position:relative;
+  display:inline-block;
+  font-size:26px;
+  font-weight:bold;
+}
+.logo span{
+  position:absolute;
+  top:-22px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:26px;
+}
+
+/* GRID */
+.grid{
+  padding:15px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:15px;
+}
+.card{
+  background:#1c1c1c;
+  border-radius:16px;
+  overflow:hidden;
+}
+.card img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+}
+.card button{
+  width:100%;
+  background:#e50914;
+  border:none;
+  color:#fff;
+  padding:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* MODAL BONITO */
+#modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  backdrop-filter:blur(6px);
+}
+.box{
+  width:92%;
+  max-width:420px;
+  background:#111;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(229,9,20,.6);
+  animation:zoom .35s ease;
+}
+@keyframes zoom{
+  from{transform:scale(.8);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+.video{
+  position:relative;
+  padding-top:56.25%;
+  background:#000;
+}
+.video iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+.close{
+  width:100%;
+  padding:14px;
+  background:linear-gradient(90deg,#b30000,#e50914);
+  color:#fff;
+  border:none;
+  font-size:16px;
+  font-weight:bold;
+}
+
+/* TEXTO AÑO NUEVO */
+#newYearText{
+  position:fixed;
+  top:20%;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:28px;
+  font-weight:bold;
+  color:#ffd700;
+  text-shadow:0 0 10px red,0 0 20px orange;
+  display:none;
+  z-index:998;
+  pointer-events:none;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  background:#000;
+  font-size:13px;
+  color:#ccc;
+}
+
+/* FUEGOS */
+#fireworks{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:997;
+}
+
+/* NIEVE */
+.snow{
+  position:fixed;
+  top:-10px;
+  color:white;
+  font-size:12px;
+  pointer-events:none;
+  animation:fall linear infinite;
+  z-index:996;
+}
+@keyframes fall{
+  to{transform:translateY(110vh)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <span id="hatIcon"></span>
+    YERSONMUSIC
+  </div>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<div id="newYearText"></div>
+<canvas id="fireworks"></canvas>
+
+<footer id="footerText">
+  YersonMusic 2026 © All rights reserved
+</footer>
+
+<div id="modal">
+  <div class="box">
+    <div class="video" id="videoBox"></div>
+    <button class="close" onclick="cerrar()">✖ Cerrar</button>
+  </div>
+</div>
+
+<script>
+// ================= VIDEOS =================
+const videos=[
+"AuFXL5TVsVw","YJTVhaaae68","-Vh8o_wlWkU","0UqRpz295z8","xAmz55B8VZA",
+"qa3wwx3ZnyY","QvtQPbR568U","HqVtm6ect7Y","CIogtTNLGx0","I6EixAa_OU4",
+"cq9s4rxXSsM","cXr-0kWcbIs","FcWZjMlneKs","rELtjiUtc50","ItHglwv0bgU",
+"nLxELS3Ei0Q","U9-EWOzuwZ4","VJN9C-PrS7E","L4o08Xu5Gs8","r_TLZVmyMmI",
+"P-6wmpoWPUo","p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs","UIoon2T3JW0",
+"jGJQQUUpiYA"
+];
+
+const grid=document.getElementById("grid");
+videos.forEach(id=>{
+  grid.innerHTML+=`
+  <div class="card">
+    <img src="https://img.youtube.com/vi/${id}/hqdefault.jpg">
+    <button onclick="reproducir('${id}')">▶ REPRODUCIR</button>
+  </div>`;
+});
+
+// ============ REPRODUCTOR SEGURO ============
+function reproducir(id){
+  const modal=document.getElementById("modal");
+  const box=document.getElementById("videoBox");
+  box.innerHTML="";
+  const iframe=document.createElement("iframe");
+  iframe.src="https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";
+  iframe.allow="autoplay; encrypted-media";
+  iframe.allowFullscreen=true;
+  box.appendChild(iframe);
+  modal.style.display="flex";
+}
+function cerrar(){
+  document.getElementById("modal").style.display="none";
+  document.getElementById("videoBox").innerHTML="";
+}
+
+// ============ FECHAS ============
+const d=new Date(),m=d.getMonth(),day=d.getDate(),h=d.getHours();
+const hat=document.getElementById("hatIcon");
+const footer=document.getElementById("footerText");
+const text=document.getElementById("newYearText");
+
+// 🎄 NAVIDAD 20–25
+if(m===11 && day>=20 && day<=25){
+  hat.textContent="🎅";
+  footer.textContent="🎄 YersonMusic 2026 © All rights reserved 🎄";
+  for(let i=0;i<35;i++){
+    const s=document.createElement("div");
+    s.className="snow";
+    s.innerText="❄";
+    s.style.left=Math.random()*100+"vw";
+    s.style.fontSize=10+Math.random()*15+"px";
+    s.style.animationDuration=3+Math.random()*5+"s";
+    s.style.opacity=Math.random();
+    document.body.appendChild(s);
+  }
+}
+
+// 🎆 AÑO NUEVO 26–1
+if((m===11 && day>=26)||(m===0 && day===1)){
+  hat.textContent="🎆";
+  footer.textContent="🎆 YersonMusic 2026 © All rights reserved 🎆";
+  text.style.display="block";
+  text.textContent=(h>=18||h<6)
+    ?"🌙🎆 Feliz Año Nuevo 2026 🎆"
+    :"🎆 Feliz Año Nuevo 2026";
+}
+
+// 🎆 FUEGOS SOLO 26 y 1
+if((m===11 && day===26)||(m===0 && day===1)){
+  const c=document.getElementById("fireworks"),ctx=c.getContext("2d");
+  c.width=innerWidth;c.height=innerHeight;
+  let p=[];
+  setInterval(()=>{
+    const x=Math.random()*c.width,y=Math.random()*c.height/2;
+    for(let i=0;i<50;i++)
+      p.push({x,y,vx:Math.random()*4-2,vy:Math.random()*4-2,a:1});
+  },800);
+  (function ani(){
+    ctx.clearRect(0,0,c.width,c.height);
+    p.forEach((o,i)=>{
+      o.x+=o.vx;o.y+=o.vy;o.a-=0.02;
+      ctx.fillStyle=`rgba(255,215,0,${o.a})`;
+      ctx.fillRect(o.x,o.y,2,2);
+      if(o.a<=0)p.splice(i,1);
+    });
+    requestAnimationFrame(ani);
+  })();
+}
+</script>
+
+</body>
+</html>
