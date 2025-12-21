@@ -25,15 +25,26 @@ header{
   font-size:26px;
   font-weight:bold;
 }
-.logo span{
+
+/* GORRITO ANIMADO */
+.hat{
   position:absolute;
-  top:-22px;
+  top:-30px;
   left:50%;
   transform:translateX(-50%);
-  font-size:26px;
+  font-size:32px;
+  animation:hatMove 2.5s ease-in-out infinite;
+  transform-origin:bottom center;
+}
+@keyframes hatMove{
+  0%{transform:translateX(-50%) rotate(0deg);}
+  25%{transform:translateX(-50%) rotate(-8deg);}
+  50%{transform:translateX(-50%) rotate(0deg);}
+  75%{transform:translateX(-50%) rotate(8deg);}
+  100%{transform:translateX(-50%) rotate(0deg);}
 }
 
-/* GRID */
+/* GRID VIDEOS */
 .grid{
   padding:15px;
   display:grid;
@@ -77,7 +88,6 @@ header{
   background:#111;
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 20px 60px rgba(229,9,20,.6);
 }
 .video{
   position:relative;
@@ -162,7 +172,7 @@ footer{
 
 <header>
   <div class="logo">
-    <span id="hatIcon"></span>
+    <span class="hat" id="hatIcon"></span>
     YERSONMUSIC
   </div>
 </header>
@@ -194,7 +204,7 @@ const videos=[
 "cq9s4rxXSsM","cXr-0kWcbIs","FcWZjMlneKs","rELtjiUtc50","ItHglwv0bgU",
 "nLxELS3Ei0Q","U9-EWOzuwZ4","VJN9C-PrS7E","L4o08Xu5Gs8","r_TLZVmyMmI",
 "P-6wmpoWPUo","p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs","UIoon2T3JW0",
-"jGJQQUUpiYA"
+"jGJQQUUpiYA","CYfzILrgzUU","k_mTcxE0vDU","mYdtnyZyexY","RE6W9tkB5k8"
 ];
 
 const grid=document.getElementById("grid");
@@ -217,13 +227,13 @@ function cerrar(){
   document.getElementById("videoBox").innerHTML="";
 }
 
-/* FECHAS */
+/* FECHAS AUTOMÁTICAS */
 const d=new Date(),m=d.getMonth(),day=d.getDate(),h=d.getHours();
 const hat=document.getElementById("hatIcon");
 const footer=document.getElementById("footerText");
 const text=document.getElementById("newYearText");
 
-/* NAVIDAD */
+/* NAVIDAD 20–25 */
 if(m===11 && day>=20 && day<=25){
   hat.textContent="🎅";
   footer.textContent="🎄 YersonMusic 2026 © All rights reserved 🎄";
@@ -239,7 +249,7 @@ if(m===11 && day>=20 && day<=25){
   }
 }
 
-/* AÑO NUEVO */
+/* AÑO NUEVO 26–1 */
 if((m===11 && day>=26)||(m===0 && day===1)){
   hat.textContent="🎆";
   footer.textContent="🎆 YersonMusic 2026 © All rights reserved 🎆";
