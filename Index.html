@@ -44,7 +44,7 @@ header{
   100%{transform:translateX(-50%) rotate(0deg);}
 }
 
-/* GRID VIDEOS */
+/* GRID */
 .grid{
   padding:15px;
   display:grid;
@@ -197,14 +197,15 @@ footer{
 </a>
 
 <script>
-// VIDEOS
+// ================= VIDEOS =================
 const videos=[
 "AuFXL5TVsVw","YJTVhaaae68","-Vh8o_wlWkU","0UqRpz295z8","xAmz55B8VZA",
 "qa3wwx3ZnyY","QvtQPbR568U","HqVtm6ect7Y","CIogtTNLGx0","I6EixAa_OU4",
 "cq9s4rxXSsM","cXr-0kWcbIs","FcWZjMlneKs","rELtjiUtc50","ItHglwv0bgU",
 "nLxELS3Ei0Q","U9-EWOzuwZ4","VJN9C-PrS7E","L4o08Xu5Gs8","r_TLZVmyMmI",
 "P-6wmpoWPUo","p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs","UIoon2T3JW0",
-"jGJQQUUpiYA","CYfzILrgzUU","k_mTcxE0vDU","mYdtnyZyexY","RE6W9tkB5k8"
+"jGJQQUUpiYA","CYfzILrgzUU","k_mTcxE0vDU","mYdtnyZyexY",
+"RE6W9tkB5k8","4nGqhMJ-YnI"
 ];
 
 const grid=document.getElementById("grid");
@@ -233,7 +234,7 @@ const hat=document.getElementById("hatIcon");
 const footer=document.getElementById("footerText");
 const text=document.getElementById("newYearText");
 
-/* NAVIDAD 20–25 */
+/* NAVIDAD */
 if(m===11 && day>=20 && day<=25){
   hat.textContent="🎅";
   footer.textContent="🎄 YersonMusic 2026 © All rights reserved 🎄";
@@ -249,7 +250,7 @@ if(m===11 && day>=20 && day<=25){
   }
 }
 
-/* AÑO NUEVO 26–1 */
+/* AÑO NUEVO */
 if((m===11 && day>=26)||(m===0 && day===1)){
   hat.textContent="🎆";
   footer.textContent="🎆 YersonMusic 2026 © All rights reserved 🎆";
