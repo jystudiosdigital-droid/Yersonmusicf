@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>YERSONMUSIC</title>
+<title>HUAYNOSUREÑO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -13,38 +13,38 @@ body{
   color:#fff;
 }
 
-/* HEADER */
+/* HEADER FOLKLÓRICO */
 header{
-  background:linear-gradient(90deg,#b30000,#e50914,#b30000);
-  padding:18px;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #8b0000,
+      #8b0000 20px,
+      #b8860b 20px,
+      #b8860b 40px
+    );
+  padding:20px;
   text-align:center;
+  border-bottom:4px solid #ffd700;
 }
 .logo{
-  position:relative;
-  display:inline-block;
-  font-size:26px;
+  font-size:28px;
   font-weight:bold;
+  letter-spacing:3px;
+  color:#fff;
+  text-shadow:2px 2px 0 #000, 0 0 12px gold;
 }
 
-/* GORRITO ANIMADO */
-.hat{
-  position:absolute;
-  top:-30px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:32px;
-  animation:hatMove 2.5s ease-in-out infinite;
-  transform-origin:bottom center;
-}
-@keyframes hatMove{
-  0%{transform:translateX(-50%) rotate(0deg);}
-  25%{transform:translateX(-50%) rotate(-8deg);}
-  50%{transform:translateX(-50%) rotate(0deg);}
-  75%{transform:translateX(-50%) rotate(8deg);}
-  100%{transform:translateX(-50%) rotate(0deg);}
+/* LÍNEA ANDINA */
+.andean-line{
+  text-align:center;
+  color:#ffd700;
+  letter-spacing:8px;
+  font-size:18px;
+  margin-top:6px;
 }
 
-/* GRID */
+/* GRID VIDEOS */
 .grid{
   padding:15px;
   display:grid;
@@ -52,9 +52,10 @@ header{
   gap:15px;
 }
 .card{
-  background:#1c1c1c;
+  background:linear-gradient(180deg,#1a1a1a,#000);
   border-radius:16px;
   overflow:hidden;
+  border:2px solid #8b0000;
 }
 .card img{
   width:100%;
@@ -63,15 +64,15 @@ header{
 }
 .card button{
   width:100%;
-  background:#e50914;
+  background:linear-gradient(90deg,#8b0000,#e6b800,#8b0000);
   border:none;
-  color:#fff;
+  color:#000;
   padding:10px;
   font-weight:bold;
   cursor:pointer;
 }
 
-/* MODAL */
+/* MODAL VIDEO */
 #modal{
   position:fixed;
   inset:0;
@@ -80,7 +81,6 @@ header{
   align-items:center;
   justify-content:center;
   z-index:999;
-  backdrop-filter:blur(6px);
 }
 .box{
   width:92%;
@@ -88,11 +88,11 @@ header{
   background:#111;
   border-radius:20px;
   overflow:hidden;
+  box-shadow:0 20px 60px rgba(229,9,20,.6);
 }
 .video{
   position:relative;
   padding-top:56.25%;
-  background:#000;
 }
 .video iframe{
   position:absolute;
@@ -104,49 +104,61 @@ header{
 .close{
   width:100%;
   padding:14px;
-  background:linear-gradient(90deg,#b30000,#e50914);
-  color:#fff;
+  background:linear-gradient(90deg,#8b0000,#e6b800);
   border:none;
-  font-size:16px;
   font-weight:bold;
-}
-
-/* TEXTO AÑO NUEVO */
-#newYearText{
-  position:fixed;
-  top:20%;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:28px;
-  font-weight:bold;
-  color:#ffd700;
-  text-shadow:0 0 10px red,0 0 20px orange;
-  display:none;
-  z-index:998;
-  pointer-events:none;
+  cursor:pointer;
 }
 
 /* FOOTER */
 footer{
-  text-align:center;
-  padding:20px;
   background:#000;
-  font-size:13px;
-  color:#ccc;
+  border-top:3px solid #8b0000;
+  color:#ffd700;
+  font-size:14px;
+  text-align:center;
+  padding:18px;
 }
 
-/* NIEVE */
+/* TEXTO AÑO NUEVO */
+#newYearBanner{
+  position:fixed;
+  top:18%;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:30px;
+  font-weight:bold;
+  color:#ffd700;
+  text-shadow:0 0 10px red,0 0 25px orange;
+  display:none;
+  z-index:998;
+  animation:brillo 1.5s infinite alternate;
+}
+@keyframes brillo{
+  from{opacity:.6}
+  to{opacity:1}
+}
+
+/* NIEVE NAVIDAD */
 .snow{
   position:fixed;
   top:-10px;
   color:white;
   font-size:12px;
-  pointer-events:none;
   animation:fall linear infinite;
+  pointer-events:none;
   z-index:996;
 }
 @keyframes fall{
   to{transform:translateY(110vh)}
+}
+
+/* FUEGOS */
+#fireworks{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:997;
 }
 
 /* WHATSAPP */
@@ -161,28 +173,42 @@ footer{
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 10px 24px rgba(0,0,0,.35);
   z-index:1000;
 }
-.wa-float img{width:30px;}
+.wa-float img{width:30px}
+
+/* TIKTOK */
+.tiktok-float{
+  position:fixed;
+  bottom:90px;
+  right:20px;
+  width:56px;
+  height:56px;
+  background:#000;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+}
+.tiktok-float img{width:28px}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">
-    <span class="hat" id="hatIcon"></span>
-    YERSONMUSIC
-  </div>
+  <div class="logo">HUAYNOSUREÑO</div>
+  <div class="andean-line">✦ ✧ ✦ ✧ ✦</div>
 </header>
 
 <div class="grid" id="grid"></div>
 
-<div id="newYearText"></div>
+<div id="newYearBanner">🎆 Feliz Año Nuevo 2026 🎆</div>
+<canvas id="fireworks"></canvas>
 
 <footer id="footerText">
-  YersonMusic 2026 © All rights reserved
+  HuaynoSureño 2026 © All rights reserved
 </footer>
 
 <div id="modal">
@@ -196,16 +222,21 @@ footer{
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
+<a href="https://www.tiktok.com/@floresstudios" target="_blank" class="tiktok-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/TikTok_logo.svg">
+</a>
+
 <script>
-// ================= VIDEOS =================
+/* VIDEOS */
 const videos=[
-"AuFXL5TVsVw","YJTVhaaae68","-Vh8o_wlWkU","0UqRpz295z8","xAmz55B8VZA",
-"qa3wwx3ZnyY","QvtQPbR568U","HqVtm6ect7Y","CIogtTNLGx0","I6EixAa_OU4",
-"cq9s4rxXSsM","cXr-0kWcbIs","FcWZjMlneKs","rELtjiUtc50","ItHglwv0bgU",
-"nLxELS3Ei0Q","U9-EWOzuwZ4","VJN9C-PrS7E","L4o08Xu5Gs8","r_TLZVmyMmI",
-"P-6wmpoWPUo","p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs","UIoon2T3JW0",
+"AuFXL5TVsVw","YJTVhaaae68","0UqRpz295z8","xAmz55B8VZA",
+"qa3wwx3ZnyY","QvtQPbR568U","HqVtm6ect7Y","CIogtTNLGx0",
+"I6EixAa_OU4","cq9s4rxXSsM","cXr-0kWcbIs","FcWZjMlneKs",
+"rELtjiUtc50","ItHglwv0bgU","nLxELS3Ei0Q","U9-EWOzuwZ4",
+"VJN9C-PrS7E","L4o08Xu5Gs8","r_TLZVmyMmI","P-6wmpoWPUo",
+"p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs","UIoon2T3JW0",
 "jGJQQUUpiYA","CYfzILrgzUU","k_mTcxE0vDU","mYdtnyZyexY",
-"RE6W9tkB5k8","4nGqhMJ-YnI"
+"RE6W9tkB5k8","4nGqhMJ-YnI","BSPwmGdvqwg"
 ];
 
 const grid=document.getElementById("grid");
@@ -228,36 +259,48 @@ function cerrar(){
   document.getElementById("videoBox").innerHTML="";
 }
 
-/* FECHAS AUTOMÁTICAS */
-const d=new Date(),m=d.getMonth(),day=d.getDate(),h=d.getHours();
-const hat=document.getElementById("hatIcon");
+/* FECHAS */
+const d=new Date(), m=d.getMonth(), day=d.getDate();
+const banner=document.getElementById("newYearBanner");
 const footer=document.getElementById("footerText");
-const text=document.getElementById("newYearText");
 
-/* NAVIDAD */
+/* NAVIDAD 20–25 */
 if(m===11 && day>=20 && day<=25){
-  hat.textContent="🎅";
-  footer.textContent="🎄 YersonMusic 2026 © All rights reserved 🎄";
+  footer.textContent="🎄 HuaynoSureño 2026 © All rights reserved 🎄";
   for(let i=0;i<35;i++){
     const s=document.createElement("div");
     s.className="snow";
     s.innerText="❄";
     s.style.left=Math.random()*100+"vw";
-    s.style.fontSize=10+Math.random()*15+"px";
     s.style.animationDuration=3+Math.random()*5+"s";
-    s.style.opacity=Math.random();
     document.body.appendChild(s);
   }
 }
 
-/* AÑO NUEVO */
+/* AÑO NUEVO 26–1 */
 if((m===11 && day>=26)||(m===0 && day===1)){
-  hat.textContent="🎆";
-  footer.textContent="🎆 YersonMusic 2026 © All rights reserved 🎆";
-  text.style.display="block";
-  text.textContent=(h>=18||h<6)
-    ?"🌙🎆 Feliz Año Nuevo 2026 🎆"
-    :"🎆 Feliz Año Nuevo 2026";
+  banner.style.display="block";
+  footer.textContent="🎆 HuaynoSureño 2026 © All rights reserved 🎆";
+
+  const c=document.getElementById("fireworks");
+  const ctx=c.getContext("2d");
+  c.width=innerWidth;c.height=innerHeight;
+  let p=[];
+  setInterval(()=>{
+    const x=Math.random()*c.width,y=Math.random()*c.height/2;
+    for(let i=0;i<60;i++)
+      p.push({x,y,vx:Math.random()*4-2,vy:Math.random()*4-2,a:1});
+  },900);
+  (function ani(){
+    ctx.clearRect(0,0,c.width,c.height);
+    p.forEach((o,i)=>{
+      o.x+=o.vx;o.y+=o.vy;o.a-=0.02;
+      ctx.fillStyle=`rgba(255,215,0,${o.a})`;
+      ctx.fillRect(o.x,o.y,2,2);
+      if(o.a<=0)p.splice(i,1);
+    });
+    requestAnimationFrame(ani);
+  })();
 }
 </script>
 
