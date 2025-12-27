@@ -42,6 +42,7 @@ header{
   width:100%;
   height:120px;
   object-fit:cover;
+  display:block;
 }
 .card button{
   width:100%;
@@ -53,7 +54,7 @@ header{
   cursor:pointer;
 }
 
-/* MODAL */
+/* MODAL VIDEO */
 #modal{
   position:fixed;
   inset:0;
@@ -88,6 +89,7 @@ header{
   border:none;
   color:#fff;
   font-weight:bold;
+  cursor:pointer;
 }
 
 /* FOOTER */
@@ -142,19 +144,17 @@ footer{
   animation:telar 12s linear infinite;
 }
 
-/* CUSCO */
+/* REGIONES */
 .region-cusco{
   border-image-source:repeating-linear-gradient(
     90deg,#d4af37 0,#d4af37 10px,#9b0000 10px,#9b0000 20px,#000 20px,#000 30px
   );
 }
-/* PUNO */
 .region-puno{
   border-image-source:repeating-linear-gradient(
     90deg,#00bcd4 0,#00bcd4 10px,#003366 10px,#003366 20px,#fff 20px,#fff 30px
   );
 }
-/* AYACUCHO */
 .region-ayacucho{
   border-image-source:repeating-linear-gradient(
     90deg,#2e7d32 0,#2e7d32 10px,#e91e63 10px,#e91e63 20px,#ffd54f 20px,#ffd54f 30px
@@ -202,7 +202,7 @@ footer{
 </a>
 
 <script>
-// VIDEOS (solo válidos)
+// ================= LISTA DE VIDEOS =================
 const videos=[
 "AuFXL5TVsVw","YJTVhaaae68","-Vh8o_wlWkU","0UqRpz295z8",
 "xAmz55B8VZA","qa3wwx3ZnyY","QvtQPbR568U","HqVtm6ect7Y",
@@ -214,12 +214,25 @@ const videos=[
 ];
 
 const grid=document.getElementById("grid");
+
+// 👉 CREA SOLO TARJETAS CON IMAGEN VÁLIDA
 videos.forEach(id=>{
-  grid.innerHTML+=`
-  <div class="card">
-    <img src="https://img.youtube.com/vi/${id}/hqdefault.jpg">
-    <button onclick="reproducir('${id}')">▶ REPRODUCIR</button>
-  </div>`;
+  const card=document.createElement("div");
+  card.className="card";
+
+  const img=document.createElement("img");
+  img.src=`https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+
+  // ❌ si no carga imagen → elimina el cuadro
+  img.onerror=()=>card.remove();
+
+  const btn=document.createElement("button");
+  btn.textContent="▶ REPRODUCIR";
+  btn.onclick=()=>reproducir(id);
+
+  card.appendChild(img);
+  card.appendChild(btn);
+  grid.appendChild(card);
 });
 
 function reproducir(id){
@@ -233,7 +246,7 @@ function cerrar(){
   document.getElementById("videoBox").innerHTML="";
 }
 
-// CAMBIO REGIÓN
+// 🔁 CAMBIO AUTOMÁTICO DE REGIÓN
 const regiones=["region-cusco","region-puno","region-ayacucho"];
 let i=0;
 setInterval(()=>{
