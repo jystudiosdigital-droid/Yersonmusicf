@@ -6,6 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+*{box-sizing:border-box}
+
 body{
   margin:0;
   background:#ffffff;
@@ -23,30 +25,34 @@ header{
   font-weight:bold;
 }
 
-/* GRID VIDEOS */
+/* GRID */
 .grid{
   padding:15px;
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
   gap:15px;
 }
+
 .card{
-  background:#f3f3f3;
+  background:#f2f2f2;
   border-radius:14px;
   overflow:hidden;
-  box-shadow:0 6px 14px rgba(0,0,0,.15);
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
 }
+
 .card img{
   width:100%;
   height:130px;
   object-fit:cover;
+  display:block;
 }
+
 .card button{
   width:100%;
-  background:#e50914;
-  border:none;
-  color:#fff;
   padding:10px;
+  border:none;
+  background:#e50914;
+  color:#fff;
   font-weight:bold;
   cursor:pointer;
 }
@@ -55,12 +61,13 @@ header{
 #modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.8);
+  background:rgba(0,0,0,.85);
   display:none;
   align-items:center;
   justify-content:center;
   z-index:999;
 }
+
 .box{
   width:92%;
   max-width:420px;
@@ -68,10 +75,12 @@ header{
   border-radius:18px;
   overflow:hidden;
 }
+
 .video{
   position:relative;
   padding-top:56.25%;
 }
+
 .video iframe{
   position:absolute;
   inset:0;
@@ -79,13 +88,13 @@ header{
   height:100%;
   border:0;
 }
+
 .close{
   width:100%;
   padding:12px;
   background:#e50914;
   color:#fff;
   border:none;
-  font-size:15px;
   font-weight:bold;
   cursor:pointer;
 }
@@ -105,9 +114,13 @@ header{
   box-shadow:0 8px 20px rgba(0,0,0,.3);
   z-index:1000;
 }
-.wa-float img{width:30px}
 
-/* TIKTOK AZUL ANIMADO */
+.wa-float img{
+  width:30px;
+  height:30px;
+}
+
+/* TIKTOK */
 .tt-float{
   position:fixed;
   bottom:90px;
@@ -124,11 +137,13 @@ header{
   box-shadow:0 0 18px rgba(0,153,255,.9);
   z-index:1000;
 }
+
 .tt-float svg{
   width:26px;
   height:26px;
   fill:#fff;
 }
+
 @keyframes tiktokGlow{
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
@@ -162,14 +177,14 @@ footer{
 </div>
 
 <!-- WHATSAPP -->
-<a href="https://wa.me/51956461177" target="_blank" class="wa-float">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+<a class="wa-float" href="https://wa.me/51956461177" target="_blank" aria-label="WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
 <!-- TIKTOK -->
-<a href="https://www.tiktok.com/@floresstudios" target="_blank" class="tt-float">
-  <svg viewBox="0 0 24 24">
-    <path d="M12.75 2h2.1c.3 1.7 1.3 3.2 2.7 4.2 1.1.8 2.3 1.2 3.7 1.3v2.2c-1.6.1-3.2-.3-4.6-1.1v6.4c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.4 0 .8 0 1.2.1v2.3c-.4-.1-.8-.2-1.2-.2-2.1 0-3.8 1.7-3.8 3.8s1.7 3.8 3.8 3.8 3.8-1.7 3.8-3.8V2z"/>
+<a class="tt-float" href="https://www.tiktok.com/@floresstudios" target="_blank" aria-label="TikTok">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12.8 2h2.1c.3 1.7 1.3 3.2 2.7 4.2 1.1.8 2.3 1.2 3.7 1.3v2.2c-1.6.1-3.2-.3-4.6-1.1v6.4c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.4 0 .8 0 1.2.1v2.3c-.4-.1-.8-.2-1.2-.2-2.1 0-3.8 1.7-3.8 3.8s1.7 3.8 3.8 3.8 3.8-1.7 3.8-3.8V2z"/>
   </svg>
 </a>
 
@@ -179,26 +194,31 @@ const videos=[
 "qa3wwx3ZnyY","QvtQPbR568U","HqVtm6ect7Y","CIogtTNLGx0","I6EixAa_OU4",
 "cq9s4rxXSsM","cXr-0kWcbIs","FcWZjMlneKs","rELtjiUtc50","ItHglwv0bgU",
 "nLxELS3Ei0Q","U9-EWOzuwZ4","VJN9C-PrS7E","L4o08Xu5Gs8","r_TLZVmyMmI",
-"P-6wmpoWPUo","p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs","UIoon2T3JW0",
-"jGJQQUUpiYA","CYfzILrgzUU","k_mTcxE0vDU","mYdtnyZyexY","RE6W9tkB5k8",
+"P-6wmpoWPUo","p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs",
+"UIoon2T3JW0","jGJQQUUpiYA","CYfzILrgzUU",
+"k_mTcxE0vDU","mYdtnyZyexY","RE6W9tkB5k8",
 "4nGqhMJ-YnI","BSPwmGdvqwg"
 ];
 
 const grid=document.getElementById("grid");
+
 videos.forEach(id=>{
-  grid.innerHTML+=`
-  <div class="card">
-    <img src="https://img.youtube.com/vi/${id}/hqdefault.jpg">
+  const card=document.createElement("div");
+  card.className="card";
+  card.innerHTML=`
+    <img src="https://img.youtube.com/vi/${id}/hqdefault.jpg" alt="Video">
     <button onclick="reproducir('${id}')">▶ REPRODUCIR</button>
-  </div>`;
+  `;
+  grid.appendChild(card);
 });
 
 function reproducir(id){
   document.getElementById("videoBox").innerHTML=
-  `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
-   allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+    `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
+     allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
   document.getElementById("modal").style.display="flex";
 }
+
 function cerrar(){
   document.getElementById("modal").style.display="none";
   document.getElementById("videoBox").innerHTML="";
