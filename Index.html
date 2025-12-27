@@ -8,41 +8,38 @@
 <style>
 body{
   margin:0;
-  background:#0b0b0b;
+  background:#ffffff;
   font-family:Arial, sans-serif;
-  color:#fff;
+  color:#000;
 }
 
 /* HEADER */
 header{
-  background:linear-gradient(90deg,#7b0000,#c62828,#7b0000);
-  padding:18px;
+  background:#b30000;
+  color:#fff;
+  padding:16px;
   text-align:center;
-  position:relative;
-  z-index:10;
-}
-.logo{
-  font-size:26px;
+  font-size:24px;
   font-weight:bold;
 }
 
 /* GRID VIDEOS */
 .grid{
-  padding:16px;
+  padding:15px;
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
   gap:15px;
 }
 .card{
-  background:#1c1c1c;
-  border-radius:16px;
+  background:#f3f3f3;
+  border-radius:14px;
   overflow:hidden;
+  box-shadow:0 6px 14px rgba(0,0,0,.15);
 }
 .card img{
   width:100%;
-  height:120px;
+  height:130px;
   object-fit:cover;
-  display:block;
 }
 .card button{
   width:100%;
@@ -54,11 +51,11 @@ header{
   cursor:pointer;
 }
 
-/* MODAL VIDEO */
+/* MODAL */
 #modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.85);
+  background:rgba(0,0,0,.8);
   display:none;
   align-items:center;
   justify-content:center;
@@ -68,7 +65,7 @@ header{
   width:92%;
   max-width:420px;
   background:#000;
-  border-radius:20px;
+  border-radius:18px;
   overflow:hidden;
 }
 .video{
@@ -84,21 +81,13 @@ header{
 }
 .close{
   width:100%;
-  padding:14px;
+  padding:12px;
   background:#e50914;
-  border:none;
   color:#fff;
+  border:none;
+  font-size:15px;
   font-weight:bold;
   cursor:pointer;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:16px;
-  background:#000;
-  font-size:13px;
-  color:#ccc;
 }
 
 /* WHATSAPP */
@@ -113,76 +102,56 @@ footer{
   display:flex;
   align-items:center;
   justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
   z-index:1000;
 }
 .wa-float img{width:30px}
 
-/* TIKTOK */
+/* TIKTOK AZUL ANIMADO */
 .tt-float{
   position:fixed;
   bottom:90px;
   right:20px;
   width:56px;
   height:56px;
-  background:#000;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
+  background:linear-gradient(45deg,#00f2ea,#0099ff,#00f2ea);
+  background-size:300% 300%;
+  animation:tiktokGlow 3s linear infinite;
+  box-shadow:0 0 18px rgba(0,153,255,.9);
   z-index:1000;
 }
-.tt-float img{width:28px}
-
-/* BORDE ANDINO */
-.borde-andino{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:5;
-  border:18px solid transparent;
-  border-image-slice:1;
-  animation:telar 12s linear infinite;
+.tt-float svg{
+  width:26px;
+  height:26px;
+  fill:#fff;
+}
+@keyframes tiktokGlow{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
-/* REGIONES */
-.region-cusco{
-  border-image-source:repeating-linear-gradient(
-    90deg,#d4af37 0,#d4af37 10px,#9b0000 10px,#9b0000 20px,#000 20px,#000 30px
-  );
-}
-.region-puno{
-  border-image-source:repeating-linear-gradient(
-    90deg,#00bcd4 0,#00bcd4 10px,#003366 10px,#003366 20px,#fff 20px,#fff 30px
-  );
-}
-.region-ayacucho{
-  border-image-source:repeating-linear-gradient(
-    90deg,#2e7d32 0,#2e7d32 10px,#e91e63 10px,#e91e63 20px,#ffd54f 20px,#ffd54f 30px
-  );
-}
-
-@keyframes telar{
-  from{filter:hue-rotate(0deg)}
-  to{filter:hue-rotate(360deg)}
-}
-
-@media(max-width:600px){
-  .borde-andino{border-width:12px}
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:16px;
+  font-size:13px;
+  color:#444;
 }
 </style>
 </head>
 
 <body>
 
-<div class="borde-andino region-cusco" id="bordeAndino"></div>
-
-<header>
-  <div class="logo">HUAYNOSUREÑO</div>
-</header>
+<header>HUAYNOSUREÑO</header>
 
 <div class="grid" id="grid"></div>
 
-<footer>HuaynoSureño 2027 © All rights reserved</footer>
+<footer>YersonMusic 2027 © All rights reserved</footer>
 
 <!-- MODAL -->
 <div id="modal">
@@ -192,47 +161,36 @@ footer{
   </div>
 </div>
 
-<!-- BOTONES -->
+<!-- WHATSAPP -->
 <a href="https://wa.me/51956461177" target="_blank" class="wa-float">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
-<a href="https://tiktok.com/@floresstudios" target="_blank" class="tt-float">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg">
+<!-- TIKTOK -->
+<a href="https://www.tiktok.com/@floresstudios" target="_blank" class="tt-float">
+  <svg viewBox="0 0 24 24">
+    <path d="M12.75 2h2.1c.3 1.7 1.3 3.2 2.7 4.2 1.1.8 2.3 1.2 3.7 1.3v2.2c-1.6.1-3.2-.3-4.6-1.1v6.4c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.4 0 .8 0 1.2.1v2.3c-.4-.1-.8-.2-1.2-.2-2.1 0-3.8 1.7-3.8 3.8s1.7 3.8 3.8 3.8 3.8-1.7 3.8-3.8V2z"/>
+  </svg>
 </a>
 
 <script>
-// ================= LISTA DE VIDEOS =================
 const videos=[
-"AuFXL5TVsVw","YJTVhaaae68","-Vh8o_wlWkU","0UqRpz295z8",
-"xAmz55B8VZA","qa3wwx3ZnyY","QvtQPbR568U","HqVtm6ect7Y",
-"CIogtTNLGx0","I6EixAa_OU4","cq9s4rxXSsM","cXr-0kWcbIs",
-"FcWZjMlneKs","rELtjiUtc50","ItHglwv0bgU","nLxELS3Ei0Q",
-"U9-EWOzuwZ4","VJN9C-PrS7E","L4o08Xu5Gs8","r_TLZVmyMmI",
-"P-6wmpoWPUo","p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs",
-"UIoon2T3JW0","jGJQQUUpiYA","4gwLXkdD-cw","86fZP9Gnqx8"
+"AuFXL5TVsVw","YJTVhaaae68","-Vh8o_wlWkU","0UqRpz295z8","xAmz55B8VZA",
+"qa3wwx3ZnyY","QvtQPbR568U","HqVtm6ect7Y","CIogtTNLGx0","I6EixAa_OU4",
+"cq9s4rxXSsM","cXr-0kWcbIs","FcWZjMlneKs","rELtjiUtc50","ItHglwv0bgU",
+"nLxELS3Ei0Q","U9-EWOzuwZ4","VJN9C-PrS7E","L4o08Xu5Gs8","r_TLZVmyMmI",
+"P-6wmpoWPUo","p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs","UIoon2T3JW0",
+"jGJQQUUpiYA","CYfzILrgzUU","k_mTcxE0vDU","mYdtnyZyexY","RE6W9tkB5k8",
+"4nGqhMJ-YnI","BSPwmGdvqwg"
 ];
 
 const grid=document.getElementById("grid");
-
-// 👉 CREA SOLO TARJETAS CON IMAGEN VÁLIDA
 videos.forEach(id=>{
-  const card=document.createElement("div");
-  card.className="card";
-
-  const img=document.createElement("img");
-  img.src=`https://img.youtube.com/vi/${id}/hqdefault.jpg`;
-
-  // ❌ si no carga imagen → elimina el cuadro
-  img.onerror=()=>card.remove();
-
-  const btn=document.createElement("button");
-  btn.textContent="▶ REPRODUCIR";
-  btn.onclick=()=>reproducir(id);
-
-  card.appendChild(img);
-  card.appendChild(btn);
-  grid.appendChild(card);
+  grid.innerHTML+=`
+  <div class="card">
+    <img src="https://img.youtube.com/vi/${id}/hqdefault.jpg">
+    <button onclick="reproducir('${id}')">▶ REPRODUCIR</button>
+  </div>`;
 });
 
 function reproducir(id){
@@ -245,15 +203,6 @@ function cerrar(){
   document.getElementById("modal").style.display="none";
   document.getElementById("videoBox").innerHTML="";
 }
-
-// 🔁 CAMBIO AUTOMÁTICO DE REGIÓN
-const regiones=["region-cusco","region-puno","region-ayacucho"];
-let i=0;
-setInterval(()=>{
-  document.getElementById("bordeAndino").className=
-  "borde-andino "+regiones[i];
-  i=(i+1)%regiones.length;
-},12000);
 </script>
 
 </body>
