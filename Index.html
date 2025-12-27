@@ -13,38 +13,18 @@ body{
   color:#fff;
 }
 
-/* HEADER FOLKLÓRICO */
+/* HEADER */
 header{
-  background:
-    repeating-linear-gradient(
-      45deg,
-      #8b0000,
-      #8b0000 20px,
-      #b8860b 20px,
-      #b8860b 40px
-    );
-  padding:20px;
+  background:linear-gradient(90deg,#7a0000,#c40000,#7a0000);
+  padding:18px;
   text-align:center;
-  border-bottom:4px solid #ffd700;
 }
 .logo{
-  font-size:28px;
+  font-size:26px;
   font-weight:bold;
-  letter-spacing:3px;
-  color:#fff;
-  text-shadow:2px 2px 0 #000, 0 0 12px gold;
 }
 
-/* LÍNEA ANDINA */
-.andean-line{
-  text-align:center;
-  color:#ffd700;
-  letter-spacing:8px;
-  font-size:18px;
-  margin-top:6px;
-}
-
-/* GRID VIDEOS */
+/* GRID */
 .grid{
   padding:15px;
   display:grid;
@@ -52,10 +32,9 @@ header{
   gap:15px;
 }
 .card{
-  background:linear-gradient(180deg,#1a1a1a,#000);
+  background:#1c1c1c;
   border-radius:16px;
   overflow:hidden;
-  border:2px solid #8b0000;
 }
 .card img{
   width:100%;
@@ -64,15 +43,15 @@ header{
 }
 .card button{
   width:100%;
-  background:linear-gradient(90deg,#8b0000,#e6b800,#8b0000);
+  background:#e50914;
   border:none;
-  color:#000;
+  color:#fff;
   padding:10px;
   font-weight:bold;
   cursor:pointer;
 }
 
-/* MODAL VIDEO */
+/* MODAL */
 #modal{
   position:fixed;
   inset:0;
@@ -88,7 +67,6 @@ header{
   background:#111;
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 20px 60px rgba(229,9,20,.6);
 }
 .video{
   position:relative;
@@ -104,61 +82,20 @@ header{
 .close{
   width:100%;
   padding:14px;
-  background:linear-gradient(90deg,#8b0000,#e6b800);
+  background:#e50914;
+  color:#fff;
   border:none;
+  font-size:16px;
   font-weight:bold;
-  cursor:pointer;
 }
 
 /* FOOTER */
 footer{
-  background:#000;
-  border-top:3px solid #8b0000;
-  color:#ffd700;
-  font-size:14px;
   text-align:center;
-  padding:18px;
-}
-
-/* TEXTO AÑO NUEVO */
-#newYearBanner{
-  position:fixed;
-  top:18%;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:30px;
-  font-weight:bold;
-  color:#ffd700;
-  text-shadow:0 0 10px red,0 0 25px orange;
-  display:none;
-  z-index:998;
-  animation:brillo 1.5s infinite alternate;
-}
-@keyframes brillo{
-  from{opacity:.6}
-  to{opacity:1}
-}
-
-/* NIEVE NAVIDAD */
-.snow{
-  position:fixed;
-  top:-10px;
-  color:white;
-  font-size:12px;
-  animation:fall linear infinite;
-  pointer-events:none;
-  z-index:996;
-}
-@keyframes fall{
-  to{transform:translateY(110vh)}
-}
-
-/* FUEGOS */
-#fireworks{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:997;
+  padding:20px;
+  background:#000;
+  font-size:13px;
+  color:#ccc;
 }
 
 /* WHATSAPP */
@@ -173,12 +110,13 @@ footer{
   display:flex;
   align-items:center;
   justify-content:center;
+  box-shadow:0 10px 24px rgba(0,0,0,.35);
   z-index:1000;
 }
-.wa-float img{width:30px}
+.wa-float img{width:30px;}
 
 /* TIKTOK */
-.tiktok-float{
+.tt-float{
   position:fixed;
   bottom:90px;
   right:20px;
@@ -189,9 +127,10 @@ footer{
   display:flex;
   align-items:center;
   justify-content:center;
+  box-shadow:0 10px 24px rgba(0,0,0,.35);
   z-index:1000;
 }
-.tiktok-float img{width:28px}
+.tt-float img{width:28px;}
 </style>
 </head>
 
@@ -199,18 +138,15 @@ footer{
 
 <header>
   <div class="logo">HUAYNOSUREÑO</div>
-  <div class="andean-line">✦ ✧ ✦ ✧ ✦</div>
 </header>
 
 <div class="grid" id="grid"></div>
 
-<div id="newYearBanner">🎆 Feliz Año Nuevo 2026 🎆</div>
-<canvas id="fireworks"></canvas>
-
-<footer id="footerText">
-  HuaynoSureño 2026 © All rights reserved
+<footer>
+  HUAYNOSUREÑO 2026 © All rights reserved
 </footer>
 
+<!-- MODAL -->
 <div id="modal">
   <div class="box">
     <div class="video" id="videoBox"></div>
@@ -218,25 +154,25 @@ footer{
   </div>
 </div>
 
+<!-- WHATSAPP -->
 <a href="https://wa.me/51956461177" target="_blank" class="wa-float">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
-<a href="https://www.tiktok.com/@floresstudios" target="_blank" class="tiktok-float">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/TikTok_logo.svg">
+<!-- TIKTOK -->
+<a href="https://www.tiktok.com/@floresstudios" target="_blank" class="tt-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg">
 </a>
 
 <script>
-/* VIDEOS */
+// LISTA FINAL DE VIDEOS (TODOS VALIDOS)
 const videos=[
-"AuFXL5TVsVw","YJTVhaaae68","0UqRpz295z8","xAmz55B8VZA",
-"qa3wwx3ZnyY","QvtQPbR568U","HqVtm6ect7Y","CIogtTNLGx0",
-"I6EixAa_OU4","cq9s4rxXSsM","cXr-0kWcbIs","FcWZjMlneKs",
-"rELtjiUtc50","ItHglwv0bgU","nLxELS3Ei0Q","U9-EWOzuwZ4",
-"VJN9C-PrS7E","L4o08Xu5Gs8","r_TLZVmyMmI","P-6wmpoWPUo",
-"p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs","UIoon2T3JW0",
-"jGJQQUUpiYA","CYfzILrgzUU","k_mTcxE0vDU","mYdtnyZyexY",
-"RE6W9tkB5k8","4nGqhMJ-YnI","BSPwmGdvqwg"
+  "AuFXL5TVsVw","YJTVhaaae68","-Vh8o_wlWkU","0UqRpz295z8","xAmz55B8VZA",
+  "qa3wwx3ZnyY","QvtQPbR568U","HqVtm6ect7Y","CIogtTNLGx0","I6EixAa_OU4",
+  "cq9s4rxXSsM","cXr-0kWcbIs","FcWZjMlneKs","rELtjiUtc50","ItHglwv0bgU",
+  "nLxELS3Ei0Q","U9-EWOzuwZ4","VJN9C-PrS7E","L4o08Xu5Gs8","r_TLZVmyMmI",
+  "P-6wmpoWPUo","p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs","UIoon2T3JW0",
+  "jGJQQUUpiYA","4gwLXkdD-cw","86fZP9Gnqx8"
 ];
 
 const grid=document.getElementById("grid");
@@ -257,50 +193,6 @@ function reproducir(id){
 function cerrar(){
   document.getElementById("modal").style.display="none";
   document.getElementById("videoBox").innerHTML="";
-}
-
-/* FECHAS */
-const d=new Date(), m=d.getMonth(), day=d.getDate();
-const banner=document.getElementById("newYearBanner");
-const footer=document.getElementById("footerText");
-
-/* NAVIDAD 20–25 */
-if(m===11 && day>=20 && day<=25){
-  footer.textContent="🎄 HuaynoSureño 2026 © All rights reserved 🎄";
-  for(let i=0;i<35;i++){
-    const s=document.createElement("div");
-    s.className="snow";
-    s.innerText="❄";
-    s.style.left=Math.random()*100+"vw";
-    s.style.animationDuration=3+Math.random()*5+"s";
-    document.body.appendChild(s);
-  }
-}
-
-/* AÑO NUEVO 26–1 */
-if((m===11 && day>=26)||(m===0 && day===1)){
-  banner.style.display="block";
-  footer.textContent="🎆 HuaynoSureño 2026 © All rights reserved 🎆";
-
-  const c=document.getElementById("fireworks");
-  const ctx=c.getContext("2d");
-  c.width=innerWidth;c.height=innerHeight;
-  let p=[];
-  setInterval(()=>{
-    const x=Math.random()*c.width,y=Math.random()*c.height/2;
-    for(let i=0;i<60;i++)
-      p.push({x,y,vx:Math.random()*4-2,vy:Math.random()*4-2,a:1});
-  },900);
-  (function ani(){
-    ctx.clearRect(0,0,c.width,c.height);
-    p.forEach((o,i)=>{
-      o.x+=o.vx;o.y+=o.vy;o.a-=0.02;
-      ctx.fillStyle=`rgba(255,215,0,${o.a})`;
-      ctx.fillRect(o.x,o.y,2,2);
-      if(o.a<=0)p.splice(i,1);
-    });
-    requestAnimationFrame(ani);
-  })();
 }
 </script>
 
