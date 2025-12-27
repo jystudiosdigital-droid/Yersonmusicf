@@ -15,18 +15,20 @@ body{
 
 /* HEADER */
 header{
-  background:linear-gradient(90deg,#7a0000,#c40000,#7a0000);
+  background:linear-gradient(90deg,#7b0000,#c62828,#7b0000);
   padding:18px;
   text-align:center;
+  position:relative;
+  z-index:10;
 }
 .logo{
   font-size:26px;
   font-weight:bold;
 }
 
-/* GRID */
+/* GRID VIDEOS */
 .grid{
-  padding:15px;
+  padding:16px;
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
   gap:15px;
@@ -64,7 +66,7 @@ header{
 .box{
   width:92%;
   max-width:420px;
-  background:#111;
+  background:#000;
   border-radius:20px;
   overflow:hidden;
 }
@@ -83,16 +85,15 @@ header{
   width:100%;
   padding:14px;
   background:#e50914;
-  color:#fff;
   border:none;
-  font-size:16px;
+  color:#fff;
   font-weight:bold;
 }
 
 /* FOOTER */
 footer{
   text-align:center;
-  padding:20px;
+  padding:16px;
   background:#000;
   font-size:13px;
   color:#ccc;
@@ -110,10 +111,9 @@ footer{
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 10px 24px rgba(0,0,0,.35);
   z-index:1000;
 }
-.wa-float img{width:30px;}
+.wa-float img{width:30px}
 
 /* TIKTOK */
 .tt-float{
@@ -127,14 +127,54 @@ footer{
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 10px 24px rgba(0,0,0,.35);
   z-index:1000;
 }
-.tt-float img{width:28px;}
+.tt-float img{width:28px}
+
+/* BORDE ANDINO */
+.borde-andino{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:5;
+  border:18px solid transparent;
+  border-image-slice:1;
+  animation:telar 12s linear infinite;
+}
+
+/* CUSCO */
+.region-cusco{
+  border-image-source:repeating-linear-gradient(
+    90deg,#d4af37 0,#d4af37 10px,#9b0000 10px,#9b0000 20px,#000 20px,#000 30px
+  );
+}
+/* PUNO */
+.region-puno{
+  border-image-source:repeating-linear-gradient(
+    90deg,#00bcd4 0,#00bcd4 10px,#003366 10px,#003366 20px,#fff 20px,#fff 30px
+  );
+}
+/* AYACUCHO */
+.region-ayacucho{
+  border-image-source:repeating-linear-gradient(
+    90deg,#2e7d32 0,#2e7d32 10px,#e91e63 10px,#e91e63 20px,#ffd54f 20px,#ffd54f 30px
+  );
+}
+
+@keyframes telar{
+  from{filter:hue-rotate(0deg)}
+  to{filter:hue-rotate(360deg)}
+}
+
+@media(max-width:600px){
+  .borde-andino{border-width:12px}
+}
 </style>
 </head>
 
 <body>
+
+<div class="borde-andino region-cusco" id="bordeAndino"></div>
 
 <header>
   <div class="logo">HUAYNOSUREÑO</div>
@@ -142,9 +182,7 @@ footer{
 
 <div class="grid" id="grid"></div>
 
-<footer>
-  HUAYNOSUREÑO 2026 © All rights reserved
-</footer>
+<footer>HuaynoSureño 2027 © All rights reserved</footer>
 
 <!-- MODAL -->
 <div id="modal">
@@ -154,25 +192,25 @@ footer{
   </div>
 </div>
 
-<!-- WHATSAPP -->
+<!-- BOTONES -->
 <a href="https://wa.me/51956461177" target="_blank" class="wa-float">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
-<!-- TIKTOK -->
-<a href="https://www.tiktok.com/@floresstudios" target="_blank" class="tt-float">
+<a href="https://tiktok.com/@floresstudios" target="_blank" class="tt-float">
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg">
 </a>
 
 <script>
-// LISTA FINAL DE VIDEOS (TODOS VALIDOS)
+// VIDEOS (solo válidos)
 const videos=[
-  "AuFXL5TVsVw","YJTVhaaae68","-Vh8o_wlWkU","0UqRpz295z8","xAmz55B8VZA",
-  "qa3wwx3ZnyY","QvtQPbR568U","HqVtm6ect7Y","CIogtTNLGx0","I6EixAa_OU4",
-  "cq9s4rxXSsM","cXr-0kWcbIs","FcWZjMlneKs","rELtjiUtc50","ItHglwv0bgU",
-  "nLxELS3Ei0Q","U9-EWOzuwZ4","VJN9C-PrS7E","L4o08Xu5Gs8","r_TLZVmyMmI",
-  "P-6wmpoWPUo","p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs","UIoon2T3JW0",
-  "jGJQQUUpiYA","4gwLXkdD-cw","86fZP9Gnqx8"
+"AuFXL5TVsVw","YJTVhaaae68","-Vh8o_wlWkU","0UqRpz295z8",
+"xAmz55B8VZA","qa3wwx3ZnyY","QvtQPbR568U","HqVtm6ect7Y",
+"CIogtTNLGx0","I6EixAa_OU4","cq9s4rxXSsM","cXr-0kWcbIs",
+"FcWZjMlneKs","rELtjiUtc50","ItHglwv0bgU","nLxELS3Ei0Q",
+"U9-EWOzuwZ4","VJN9C-PrS7E","L4o08Xu5Gs8","r_TLZVmyMmI",
+"P-6wmpoWPUo","p9njZy-8HF4","KuDOe71Urz0","eJBKrySnwMs",
+"UIoon2T3JW0","jGJQQUUpiYA","4gwLXkdD-cw","86fZP9Gnqx8"
 ];
 
 const grid=document.getElementById("grid");
@@ -186,14 +224,23 @@ videos.forEach(id=>{
 
 function reproducir(id){
   document.getElementById("videoBox").innerHTML=
-    `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
-     allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+  `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0"
+   allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
   document.getElementById("modal").style.display="flex";
 }
 function cerrar(){
   document.getElementById("modal").style.display="none";
   document.getElementById("videoBox").innerHTML="";
 }
+
+// CAMBIO REGIÓN
+const regiones=["region-cusco","region-puno","region-ayacucho"];
+let i=0;
+setInterval(()=>{
+  document.getElementById("bordeAndino").className=
+  "borde-andino "+regiones[i];
+  i=(i+1)%regiones.length;
+},12000);
 </script>
 
 </body>
